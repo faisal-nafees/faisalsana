@@ -270,7 +270,10 @@ $(document).ready(function() {
   const savedTheme = localStorage.getItem('theme') || 'light';
   $('html').attr('data-theme', savedTheme);
   if (savedTheme === 'dark') {
+    $('html').addClass('dark');
     $('#dark-mode-toggle').find('i').removeClass('fa-moon').addClass('fa-sun');
+  } else {
+    $('html').removeClass('dark');
   }
 
   // Preloader Dissolve
@@ -348,6 +351,11 @@ function initEventListeners() {
     const currentTheme = $('html').attr('data-theme') || 'light';
     const newTheme = currentTheme === 'light' ? 'dark' : 'light';
     $('html').attr('data-theme', newTheme);
+    if (newTheme === 'dark') {
+      $('html').addClass('dark');
+    } else {
+      $('html').removeClass('dark');
+    }
     localStorage.setItem('theme', newTheme);
     $(this).find('i').toggleClass('fa-moon fa-sun');
   });
