@@ -1,0 +1,492 @@
+/* Style imports for elegant typography */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&family=Amiri:ital,wght@0,400;0,700;1,400&family=Reem+Kufi:wght@400;700&display=swap');
+
+:root {
+  /* Color Palette - Light Mode */
+  --bg-primary: #fdf6ec;     /* Cream/Beige */
+  --bg-secondary: #f8d7da;   /* Soft Pink */
+  --gold: #d4af37;           /* Gold Accents */
+  --gold-glow: rgba(212, 175, 55, 0.4);
+  --gold-dark: #b8860b;
+  --text-primary: #2d251e;   /* Dark Bronze/Brown for high-end feel */
+  --text-secondary: #5c4e43;
+  --card-bg: rgba(255, 255, 255, 0.65);
+  --card-border: rgba(212, 175, 55, 0.25);
+  --shadow-color: rgba(92, 78, 67, 0.08);
+  --bg-pattern-opacity: 0.04;
+}
+
+/* Dark Mode Overrides */
+[data-theme="dark"] {
+  --bg-primary: #0b1c15;     /* Deep Midnight Emerald */
+  --bg-secondary: #060f0c;   /* Darker Emerald */
+  --gold: #d4af37;
+  --gold-glow: rgba(212, 175, 55, 0.6);
+  --gold-dark: #f0c954;
+  --text-primary: #f5f1eb;   /* Light Cream */
+  --text-secondary: #c5beb3;
+  --card-bg: rgba(11, 28, 21, 0.75);
+  --card-border: rgba(212, 175, 55, 0.4);
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --bg-pattern-opacity: 0.08;
+}
+
+/* General Reset & Core Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) transparent;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gold);
+  border-radius: 10px;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.5s ease, color 0.5s ease;
+  overflow-x: hidden;
+}
+
+/* RTL Support - Adjustments for Urdu Noto Nastaliq Font */
+[dir="rtl"] {
+  font-family: 'Noto Nastaliq Urdu', 'Amiri', serif;
+}
+[dir="rtl"] .font-title {
+  font-family: 'Noto Nastaliq Urdu', serif;
+  line-height: 2.2;
+}
+
+/* Typography Helpers */
+.font-title-eng {
+  font-family: 'Cinzel', serif;
+}
+.font-title-urdu {
+  font-family: 'Noto Nastaliq Urdu', serif;
+}
+.font-arabic {
+  font-family: 'Amiri', serif;
+  line-height: 1.8;
+}
+.font-kufi {
+  font-family: 'Reem Kufi', sans-serif;
+}
+
+/* Subtle Repeating Islamic Star Pattern Background */
+.islamic-pattern {
+  position: relative;
+}
+.islamic-pattern::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath d='M40 0 L48 32 L80 40 L48 48 L40 80 L32 48 L0 40 L32 32 Z' fill='none' stroke='%23d4af37' stroke-opacity='1' stroke-width='1.2'/%3E%3Ccircle cx='40' cy='40' r='10' fill='none' stroke='%23d4af37' stroke-opacity='1' stroke-width='1.2'/%3E%3Cpath d='M0 0 L15 15 M80 0 L65 15 M0 80 L15 65 M80 80 L65 65' fill='none' stroke='%23d4af37' stroke-opacity='1' stroke-width='1.2'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  opacity: var(--bg-pattern-opacity);
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* Preloader styles */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-primary);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.8s cubic-bezier(0.77, 0, 0.175, 1), visibility 0.8s;
+}
+
+.mandala-loader {
+  animation: spinMandala 12s linear infinite;
+  filter: drop-shadow(0 0 10px var(--gold-glow));
+}
+
+@keyframes spinMandala {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 3D Envelope Container */
+#envelope-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(11, 28, 21, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 1s ease, visibility 1s;
+}
+
+.envelope-container {
+  position: relative;
+  width: 480px;
+  height: 340px;
+  max-width: 90%;
+  perspective: 1500px;
+}
+
+.envelope-wrapper {
+  width: 100%;
+  height: 100%;
+  background-color: #f7e9d7; /* Elegant soft cream */
+  border-radius: 4px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  transition: transform 0.8s ease;
+}
+
+.envelope-left-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ead9c3;
+  clip-path: polygon(0 0, 50% 50%, 0 100%);
+  z-index: 4;
+}
+
+.envelope-right-flap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ebdcc7;
+  clip-path: polygon(100% 0, 50% 50%, 100% 100%);
+  z-index: 4;
+}
+
+.envelope-bottom-flap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #decab2;
+  clip-path: polygon(0 100%, 50% 50%, 100% 100%);
+  z-index: 5;
+}
+
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #d0baa0;
+  clip-path: polygon(0 0, 50% 50%, 100% 0);
+  transform-origin: top;
+  z-index: 6;
+  transition: transform 0.6s ease-in-out;
+}
+
+/* Fold flap open */
+.envelope-container.open .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 2;
+}
+
+.envelope-card {
+  position: absolute;
+  bottom: 10px;
+  left: 5%;
+  width: 90%;
+  height: 90%;
+  background: var(--bg-primary);
+  border: 2px solid var(--gold);
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  z-index: 3;
+  transition: transform 0.8s ease-in-out;
+  transform: translateY(0);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.envelope-container.open .envelope-card {
+  transform: translateY(-160px) scale(1.05);
+  z-index: 7;
+}
+
+/* Wax Seal Button */
+.wax-seal {
+  position: absolute;
+  top: 140px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, #b22222 60%, #8b0000 100%);
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3), inset 0 2px 4px rgba(255,255,255,0.4);
+  z-index: 8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--gold);
+  font-size: 24px;
+  border: 1px solid #700;
+  transition: all 0.3s ease;
+}
+
+.wax-seal:hover {
+  transform: translateX(-50%) scale(1.1);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4), inset 0 2px 4px rgba(255,255,255,0.5);
+}
+
+.envelope-container.open .wax-seal {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: var(--card-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 8px 32px 0 var(--shadow-color);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.glass-panel:hover {
+  box-shadow: 0 12px 48px 0 rgba(212, 175, 55, 0.15);
+  border-color: var(--gold);
+}
+
+/* Glow Borders */
+.gold-glow-border {
+  position: relative;
+  overflow: hidden;
+}
+
+.gold-glow-border::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid transparent;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--gold) 0%, transparent 50%, var(--gold) 100%) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.5;
+  transition: opacity 0.4s;
+}
+
+.gold-glow-border:hover::after {
+  opacity: 1;
+}
+
+/* Floating Lantern Animation */
+.floating-lantern {
+  animation: lanternFloat 6s ease-in-out infinite alternate;
+}
+
+@keyframes lanternFloat {
+  0% {
+    transform: translateY(0) rotate(-3deg);
+  }
+  100% {
+    transform: translateY(-20px) rotate(3deg);
+  }
+}
+
+/* Falling Rose Petals Canvas / Span Styles */
+.rose-petal {
+  position: fixed;
+  background-color: #ffb7c5;
+  border-radius: 150px 0 150px 150px;
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 40;
+  animation: fall linear infinite;
+  box-shadow: inset -2px -2px 10px rgba(0,0,0,0.05);
+}
+
+.rose-petal.sparkle {
+  background: radial-gradient(circle, #fff 20%, #d4af37 100%);
+  border-radius: 50%;
+  filter: blur(1px);
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-50px) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(105vh) translateX(100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Countdown Circle Timers */
+.countdown-svg-ring {
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+.countdown-svg-circle {
+  transition: stroke-dashoffset 0.35s;
+  stroke: var(--gold);
+}
+
+/* Timeline Vertical Line & Connectors */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, var(--gold) 15%, var(--gold) 85%, transparent);
+}
+
+@media (max-width: 768px) {
+  .timeline-line {
+    left: 20px;
+    transform: none;
+  }
+}
+
+/* Glowing Timeline Dot */
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .timeline-dot {
+    left: 20px;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Custom Lightbox Styles */
+#lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(11, 28, 21, 0.98);
+  z-index: 9999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+#lightbox.active {
+  display: flex;
+  opacity: 1;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 85%;
+  max-height: 80%;
+  transform: scale(0.9);
+  transition: transform 0.4s ease;
+}
+
+#lightbox.active .lightbox-content {
+  transform: scale(1);
+}
+
+/* Navigation Link Underline Effect */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--gold);
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* WhatsApp Floating pulse effect */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+.whatsapp-pulse {
+  animation: pulseGlow 2s infinite;
+}
+
+/* Typography styles */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.05em;
+}
+
+/* Custom Card Tilt Hover */
+.tilt-card {
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+}
+.tilt-card:hover {
+  transform: translateY(-8px);
+}
