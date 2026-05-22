@@ -176,6 +176,7 @@ body {
   background-color: #ead9c3;
   clip-path: polygon(0 0, 50% 50%, 0 100%);
   z-index: 4;
+  transform: translateZ(10px);
 }
 
 .envelope-right-flap {
@@ -187,6 +188,7 @@ body {
   background-color: #ebdcc7;
   clip-path: polygon(100% 0, 50% 50%, 100% 100%);
   z-index: 4;
+  transform: translateZ(10px);
 }
 
 .envelope-bottom-flap {
@@ -198,6 +200,7 @@ body {
   background-color: #decab2;
   clip-path: polygon(0 100%, 50% 50%, 100% 100%);
   z-index: 5;
+  transform: translateZ(15px);
 }
 
 .envelope-flap {
@@ -211,11 +214,12 @@ body {
   transform-origin: top;
   z-index: 6;
   transition: transform 0.6s ease-in-out;
+  transform: rotateX(0deg) translateZ(20px);
 }
 
 /* Fold flap open */
 .envelope-container.open .envelope-flap {
-  transform: rotateX(180deg);
+  transform: rotateX(180deg) translateZ(20px);
   z-index: 2;
 }
 
@@ -231,7 +235,7 @@ body {
   box-shadow: 0 10px 20px rgba(0,0,0,0.15);
   z-index: 3;
   transition: transform 0.8s ease-in-out;
-  transform: translateY(0);
+  transform: translateZ(5px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -240,16 +244,16 @@ body {
 }
 
 .envelope-container.open .envelope-card {
-  transform: translateY(-160px) scale(1.05);
+  transform: translateY(-160px) translateZ(30px) scale(1.05);
   z-index: 7;
 }
 
 /* Wax Seal Button */
 .wax-seal {
   position: absolute;
-  top: 140px;
+  top: calc(50% - 30px);
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateZ(25px);
   width: 60px;
   height: 60px;
   background: radial-gradient(circle, #b22222 60%, #8b0000 100%);
@@ -266,13 +270,14 @@ body {
 }
 
 .wax-seal:hover {
-  transform: translateX(-50%) scale(1.1);
+  transform: translateX(-50%) translateZ(25px) scale(1.1);
   box-shadow: 0 6px 15px rgba(0,0,0,0.4), inset 0 2px 4px rgba(255,255,255,0.5);
 }
 
 .envelope-container.open .wax-seal {
   opacity: 0;
   pointer-events: none;
+  transform: translateX(-50%) translateZ(0) scale(0);
 }
 
 /* Glassmorphism Classes */

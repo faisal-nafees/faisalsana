@@ -2,7 +2,7 @@
 const translations = {
   en: {
     // Navigation
-    nav_logo: "S & F",
+    nav_logo: "F & S",
     nav_home: "Home",
     nav_couple: "The Couple",
     nav_events: "Events",
@@ -11,10 +11,10 @@ const translations = {
     nav_rsvp: "RSVP",
     
     // Preloader & Envelope
-    welcome_msg: "Welcome to Sana & Faisal's Wedding",
+    welcome_msg: "Welcome to Faisal & Sana's Wedding",
     click_to_open: "Click Seal to Open Invitation",
     envelope_title: "Wedding Invitation",
-    envelope_subtitle: "Sana & Faisal",
+    envelope_subtitle: "Faisal & Sana",
     envelope_desc: "You are cordially invited to celebrate the Nikah of our beloved children.",
     btn_open: "Open Invite",
     
@@ -37,7 +37,7 @@ const translations = {
     seconds: "Seconds",
     
     // Couple
-    couple_title: "The Bride & Groom",
+    couple_title: "The Groom & Bride",
     bride_title: "The Bride",
     groom_title: "The Groom",
     bride_name: "Sana Fatima",
@@ -127,7 +127,7 @@ const translations = {
   },
   ur: {
     // Navigation
-    nav_logo: "ث & ف",
+    nav_logo: "ف & ث",
     nav_home: "ہوم",
     nav_couple: "دولہا اور دلہن",
     nav_events: "تقاریب",
@@ -136,10 +136,10 @@ const translations = {
     nav_rsvp: "شرکت کی اطلاع",
     
     // Preloader & Envelope
-    welcome_msg: "ثنا اور فیصل کی شادی میں خوش آمدید",
+    welcome_msg: "فیصل اور ثنا کی شادی میں خوش آمدید",
     click_to_open: "دعوت نامہ کھولنے کے لیے مہر پر کلک کریں",
     envelope_title: "شادی کا دعوت نامہ",
-    envelope_subtitle: "ثنا اور فیصل",
+    envelope_subtitle: "فیصل اور ثنا",
     envelope_desc: "ہم اپنے پیارے بچوں کے نکاح کی خوشی میں آپ کو شرکت کی دعوت دیتے ہیں۔",
     btn_open: "دعوت نامہ کھولیں",
     
